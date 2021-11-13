@@ -13,7 +13,27 @@ public class WaveMatrix {
                     }
                 }
             }
-
+              //other way
+              
+              int top = 0;
+           int bottom = 3;
+           int left =0;
+           int direction = 0;
+           while(top<=bottom) {
+               if(direction == 0) {
+                   for(int i = top ; i<= bottom ; i++) {
+                       System.out.print(arr[i][left] + " ");
+                   }
+                   left++;
+               }else if(direction == 1) {
+                   for(int i = bottom ; i>= top ; i--) {
+                       System.out.print(arr[i][left]+ " ");
+                   }
+                   left++;
+               }
+               System.out.println(" ");
+               direction = (direction + 1)%2;
+           }
 
 
     }
