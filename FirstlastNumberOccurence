@@ -1,0 +1,45 @@
+//Problem to Find the first or last occurrence of a given number in a sorted array [1,3,3,3,3,3,6,6,6,6,7,7,7,7] target =3
+
+public class FirstlastNumberOccurence {
+        static int first_occurance(int a[], int target) {
+            int low=0, high=a.length-1;
+
+            while(low<high) {
+                int mid=low+(high-low)/2;
+
+                if(target<=a[mid])
+                    high=mid;
+
+                else low=mid+1;
+            }
+            if(a[low]!=target) return -1;
+            return low;
+        }
+
+        static int last_occurance(int a[], int target) {
+            int low=0,high=a.length-1;
+
+            while(low<high) {
+                int mid=low+(high-low)/2;
+
+                if(target>=a[mid])
+                    low=mid+1;
+
+                else high=mid;
+
+            }
+
+            return low-1;
+
+        }
+
+        public static void main(String[] args) {
+            int a[]= {1,3,3,3,3,3,6,6,6,6,7,7,7,7};
+            int target=6;
+            System.out.println(first_occurance(a,target));
+            System.out.println(last_occurance(a,target));
+
+
+
+    }
+}
