@@ -1,0 +1,39 @@
+//Problem Print spiral in anti-clockwise
+
+public class SpiralMatrix {
+    public static void main(String[] args) {
+        int[][] arr = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        int minr =0;
+        int minc =0;
+        int maxr = arr.length-1;
+        int maxc = arr[0].length -1;
+        int tne= arr.length * arr[0].length;
+        int cnt=0;
+        while (cnt<tne){
+            //left wall
+            for( int i=minr,j = minc;i<=maxr && cnt<tne; i++){
+                System.out.println(arr[i][j]);
+                cnt++;
+            }
+            minc++;
+            //bottom wall
+            for( int i=maxr,j = minc;j<=maxc && cnt<tne; j++){
+                System.out.println(arr[i][j]);
+                cnt++;
+            }
+            maxr--;
+            //right wall
+            for( int i=maxr,j = maxc;i>=minr && cnt<tne; i--){
+                System.out.println(arr[i][j]);
+                cnt++;
+            }
+            maxc--;
+            //top wall
+            for( int i=minr,j = maxc;j>=minc && cnt<tne; j--){
+                System.out.println(arr[i][j]);
+                cnt++;
+            }
+            minr++;
+        }
+    }
+}
