@@ -1,0 +1,22 @@
+package com.recursion;
+
+import java.util.Scanner;
+
+public class ReverseString {
+
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        String n = sc.nextLine();
+        ReverseString(n);
+    }
+    static void ReverseString(String n){
+        if ((n==null)||(n.length() <= 1))
+            System.out.println(n);
+        else
+        {
+            System.out.print(n.charAt(n.length()-1));
+            ReverseString(n.substring(0,n.length()-1));
+        }
+
+    }
+}
