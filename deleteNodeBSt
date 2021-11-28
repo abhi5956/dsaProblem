@@ -1,0 +1,114 @@
+package com.tree;
+
+public class deleteNodeBSt {
+
+    public static class Node {
+
+        public int data;
+        public Node left;
+        public Node right;
+
+        public Node() {
+        }
+
+        public Node(int data) {
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+
+    }
+
+    public Node root;
+
+    public void insert(int data) {
+
+        Node newNode = new Node(data);
+
+        if (null == root) {
+            root = newNode;
+            return;
+        } else {
+            Node currentNode = root;
+            Node parentNode = null;
+
+            while (true) {
+                parentNode = currentNode;
+                if (data < currentNode.data) {
+                    currentNode = currentNode.left;
+                    if (null == currentNode) {
+                        parentNode.left = newNode;
+                        return;
+                    }
+                } else {
+                    currentNode = currentNode.right;
+                    if (null == currentNode) {
+                        parentNode.right = newNode;
+                        return;
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+    public Node deleteNode(Node root, int data) {
+        if (root == null)
+            return null;
+
+        if (data < root.data) {
+            root.left = deleteNode(root.left, data);
+        } else if (data > root.data) {
+            root.right = deleteNode(root.right, data);
+        } else {
+            if (root.left != null && root.right != null) {
+                int leftMax = getLeftMax(root.left);
+                root.data = leftMax;
+                root.left = deleteNode(root.left, leftMax);
+                return root;
+            } else if (root.left != null) {
+                return root.left;
+            } else if (root.right != null) {
+                return root.right;
+            } else {
+                return null;
+            }
+
+        }
+        return root;
+
+    }
+
+    private int getLeftMax(Node node) {
+
+        int max = Integer.MIN_VALUE;
+
+        while (node != null) {
+            max = node.data;
+            node = node.right;
+        }
+
+        return max;
+    }
+
+    public static void main(String[] args) {
+
+        deleteNodeBSt obj = new deleteNodeBSt();
+
+        obj.insert(50);
+        obj.insert(40);
+        obj.insert(60);
+        obj.insert(20);
+        obj.insert(10);
+        obj.insert(23);
+        obj.insert(75);
+        obj.insert(99);
+        obj.insert(1);
+        obj.insert(5);
+        obj.insert(37);
+        System.out.println(obj);
+    }
+
+}
